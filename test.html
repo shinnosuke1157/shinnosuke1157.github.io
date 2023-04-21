@@ -5,17 +5,6 @@
 </head>
 <body>
 	<h1>Welcome to my web app!</h1>
-	<p>Enter your name:</p>
-	<input type="text" id="nameInput">
-	<button onclick="sayHello()">Say Hello</button>
-
-	<script>
-		function sayHello() {
-			var name = document.getElementById("nameInput").value;
-			alert("Hello, " + name + "!");
-		}
-	</script>
-
     <p>今日の日付は<span id="text"></span>日です</p>
 
     <script type="text/javascript">
@@ -26,5 +15,15 @@
             return day;
         }
     </script>
+	<p>Enter your name:</p>
+	<input type="text" id="nameInput">
+	<button onclick="sayHello()">Say Hello</button>
+
+	<script>
+		function sayHello() {
+			var name = document.getElementById("nameInput").value;
+			alert("Hello, " + name + "!");
+		}
+	</script>
 </body>
 </html>
