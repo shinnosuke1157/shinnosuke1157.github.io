@@ -10,11 +10,15 @@
 
 	<script>
 		var clicked = false;
+        localStorage.setItem('click_value', clicked);
 
 		function toggleAnswer() {
-			clicked = !clicked;
+			clicked = localStorage.getItem('click_value');
+            clicked = !clicked
+            
+            localStorage.setItem('click_value', clicked);
 
-			if (clicked) {
+			if (click_value) {
 				document.getElementById("answer").innerHTML = "いる";
 			} else {
 				document.getElementById("answer").innerHTML = "いない";
