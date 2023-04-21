@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>ボタン</title>
-        <script>
-            window.onload = function() {
-                // localStorageからどのボタンがクリックされたかどうかの情報を取得
-                var click_text = localStorage.getItem('clicked');
-
-                var now = new Date(); // 現在の時刻を取得
-                var tmp_time = localStorage.getItem('time'); // 保存した時刻を取得
-                var min = now.getMinutes();
-                if (min == tmp_time) { // 時刻が異なる場合
-                    localStorage.setItem('time', min); // 時刻を保存する
-                    click_text = "不明"
-                }
-
-                document.getElementById("displayText").innerHTML = click_text;
-            };
-
-            function displayText(text) {
-                document.getElementById("displayText").innerHTML = text;
-                localStorage.setItem('clicked', text);
-            }
-        </script>
-    </head>
-    <body>
-        <h1>Button Click Example</h1>
-        <button onclick="displayText('Button 1 was clicked!')">Button 1</button>
-        <button onclick="displayText('Button 2 was clicked!')">Button 2</button>
-        <button onclick="displayText('Button 3 was clicked!')">Button 3</button>
-        <div id="displayText"></div>
-    </body>
+<head>
+	<title>Button Example</title>
+	<script>
+		function updateDisplay() {
+			// 選択されたボタンに応じて文字を表示する
+			var selectedButton = localStorage.getItem("selectedButton");
+			if (selectedButton == 1) {
+				document.getElementById("display").innerHTML = "Button 1 was selected.";
+			} else if (selectedButton == 2) {
+				document.getElementById("display").innerHTML = "Button 2 was selected.";
+			} else if (selectedButton == 3) {
+				document.getElementById("display").innerHTML = "Button 3 was selected.";
+			} else {
+				document.getElementById("display").innerHTML = "Please select a button.";
+			}
+			
+			// ページ読み込み時の分数と現在の分数を比較して、「不明」を表示するかどうかを判断する
+			var storedMinute = localStorage.getItem("minute");
+			var currentMinute = new Date().getMinutes();
+			if (storedMinute != currentMinute) {
+				document.getElementById("time").innerHTML = "不明";
+                localStorage.setItem("minute", date.getMinutes());
+			}
+		}
+		
+		function buttonSelected(buttonNum) {
+			// 選択されたボタンの番号をlocalStorageに保存する
+			localStorage.setItem("selectedButton", buttonNum);
+			updateDisplay();
+		}
+	</script>
+</head>
+<body onload="updateDisplay();">
+	<h1>Select a button:</h1>
+	<button onclick="buttonSelected(1)">Button 1</button>
+	<button onclick="buttonSelected(2)">Button 2</button>
+	<button onclick="buttonSelected(3)">Button 3</button>
+	<p id="display"></p>
+	<p>Current time: <span id="time"></span></p>
+</body>
 </html>
