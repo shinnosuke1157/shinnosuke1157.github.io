@@ -20,7 +20,6 @@
                 } else {
                     document.getElementById("display").innerHTML = "Button 3 was selected.";
                 }
-                localStorage.setItem("minute", currentMinute);
             }
 		}
 		
@@ -28,6 +27,7 @@
 			// 選択されたボタンの番号をlocalStorageに保存する
 			localStorage.setItem("selectedButton", buttonNum);
 			updateDisplay();
+            localStorage.setItem("minute", currentMinute);
 		}
 	</script>
 </head>
