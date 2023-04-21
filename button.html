@@ -22,7 +22,9 @@
 			if (storedMinute != currentMinute) {
 				document.getElementById("time").innerHTML = "不明";
                 localStorage.setItem("minute", date.getMinutes());
-			}
+			}else{
+                document.getElementById("time").innerHTML = "あ";
+            }
 		}
 		
 		function buttonSelected(buttonNum) {
