@@ -9,7 +9,7 @@
 
                 var now = new Date(); // 現在の時刻を取得
                 var tmp_time = localStorage.getItem('time'); // 保存した時刻を取得
-                var min = now.getMinutes()
+                var min = now.getMinutes();
                 if (min == tmp_time) { // 時刻が異なる場合
                     localStorage.setItem('time', min); // 時刻を保存する
                     click_text = "不明"
