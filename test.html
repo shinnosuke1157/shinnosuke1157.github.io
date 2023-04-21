@@ -15,5 +15,16 @@
 			alert("Hello, " + name + "!");
 		}
 	</script>
+
+    <p>今日の日付は<span id="text"></span>日です</p>
+
+    <script type="text/javascript">
+        document.getElementById("text").innerHTML = showDay();
+        function showDay() {
+            var now = new Date();
+            var day = now.getDate();
+            return day;
+        }
+    </script>
 </body>
 </html>
