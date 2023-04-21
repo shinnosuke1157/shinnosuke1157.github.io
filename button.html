@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Button Click Example</title>
+        <title>ボタン</title>
         <script>
             window.onload = function() {
                 // localStorageからどのボタンがクリックされたかどうかの情報を取得
                 var click_text = localStorage.getItem('clicked');
+
+                var now = new Date(); // 現在の時刻を取得
+                var tmp_time = localStorage.getItem('time'); // 保存した時刻を取得
+                var min = now.getMinutes()
+                if (min == tmp_time) { // 時刻が異なる場合
+                    localStorage.setItem('time', min); // 時刻を保存する
+                    click_text = "不明"
+                }
+
                 document.getElementById("displayText").innerHTML = click_text;
             };
 
