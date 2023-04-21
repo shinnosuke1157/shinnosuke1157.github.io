@@ -1,48 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Button Click Test</title>
-	<!-- FirebaseのCDNを読み込む -->
-	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
-	<script>
-		// Firebaseの設定
-		var firebaseConfig = {
-			apiKey: "YOUR_API_KEY",
-			authDomain: "YOUR_AUTH_DOMAIN",
-			databaseURL: "YOUR_DATABASE_URL",
-			projectId: "YOUR_PROJECT_ID",
-			storageBucket: "YOUR_STORAGE_BUCKET",
-			messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-			appId: "YOUR_APP_ID",
-			measurementId: "YOUR_MEASUREMENT_ID"
-		};
-		
-		// Firebaseの初期化
-		firebase.initializeApp(firebaseConfig);
-		
-		// データベースの参照を取得
-		var dbRef = firebase.database().ref().child('button-click');
-		
-		// ボタンがクリックされたかどうかを監視する
-		dbRef.on('value', function(snapshot) {
-			// ボタンがクリックされたかどうかによって表示するテキストを変更
-			if (snapshot.val() === true) {
-				document.getElementById('result').innerHTML = 'Yes';
-			} else {
-				document.getElementById('result').innerHTML = 'No';
-			}
-		});
-		
-		function handleClick() {
-			// データベースにボタンがクリックされたことを記録
-			dbRef.set(true);
-		}
-	</script>
+	<title>On-Off</title>
 </head>
 <body>
-	<h1>Did you click the button?</h1>
-	<button onclick="handleClick()">Click Me</button>
-	<p id="result"></p>
+	<h1>あの方</h1>
+	<button onclick="toggleAnswer()">Click me</button>
+	<p id="answer">不明</p>
+
+	<script>
+		var clicked = false;
+        localStorage.setItem('click_value', clicked);
+
+		function toggleAnswer() {
+			clicked = localStorage.getItem('click_value');
+            clicked = !clicked
+            
+            localStorage.setItem('click_value', clicked);
+
+			if (click_value) {
+				document.getElementById("answer").innerHTML = "いる";
+			} else {
+				document.getElementById("answer").innerHTML = "いない";
+			}
+		}
+	</script>
 </body>
 </html>
