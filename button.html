@@ -21,7 +21,7 @@
 			var currentMinute = new Date().getMinutes();
 			if (storedMinute != currentMinute) {
 				document.getElementById("time").innerHTML = "不明";
-                localStorage.setItem("minute", date.getMinutes());
+                localStorage.setItem("minute", currentMinute);
 			}else{
                 document.getElementById("time").innerHTML = "あ";
             }
