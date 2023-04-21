@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>On-Off</title>
+</head>
+<body>
+	<h1>Button Click Web App</h1>
+	<button onclick="toggleAnswer()">Click me</button>
+	<p id="answer">No</p>
+
+	<script>
+		var clicked = false;
+
+		function toggleAnswer() {
+			clicked = !clicked;
+
+			if (clicked) {
+				document.getElementById("answer").innerHTML = "Yes";
+			} else {
+				document.getElementById("answer").innerHTML = "No";
+			}
+		}
+	</script>
+</body>
+</html>
