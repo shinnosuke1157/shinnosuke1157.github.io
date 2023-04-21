@@ -2,25 +2,41 @@
 <html>
 <head>
 	<title>Button Click Test</title>
+	<!-- FirebaseのCDNを読み込む -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 	<script>
-		window.onload = function() {
-			// localStorageからボタンがクリックされたかどうかの情報を取得
-			var clicked = localStorage.getItem('clicked');
-			
+		// Firebaseの設定
+		var firebaseConfig = {
+			apiKey: "YOUR_API_KEY",
+			authDomain: "YOUR_AUTH_DOMAIN",
+			databaseURL: "YOUR_DATABASE_URL",
+			projectId: "YOUR_PROJECT_ID",
+			storageBucket: "YOUR_STORAGE_BUCKET",
+			messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+			appId: "YOUR_APP_ID",
+			measurementId: "YOUR_MEASUREMENT_ID"
+		};
+		
+		// Firebaseの初期化
+		firebase.initializeApp(firebaseConfig);
+		
+		// データベースの参照を取得
+		var dbRef = firebase.database().ref().child('button-click');
+		
+		// ボタンがクリックされたかどうかを監視する
+		dbRef.on('value', function(snapshot) {
 			// ボタンがクリックされたかどうかによって表示するテキストを変更
-			if (clicked === 'yes') {
+			if (snapshot.val() === true) {
 				document.getElementById('result').innerHTML = 'Yes';
 			} else {
 				document.getElementById('result').innerHTML = 'No';
 			}
-		};
+		});
 		
 		function handleClick() {
-			// localStorageにボタンがクリックされたことを記録
-			localStorage.setItem('clicked', 'yes');
-			
-			// テキストを'Yes'に変更
-			document.getElementById('result').innerHTML = 'Yes';
+			// データベースにボタンがクリックされたことを記録
+			dbRef.set(true);
 		}
 	</script>
 </head>
