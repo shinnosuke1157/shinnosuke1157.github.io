@@ -12,17 +12,15 @@
 			var currentMinute = new Date().getMinutes();
 			if (storedMinute != currentMinute) {
 				document.getElementById("display").innerHTML = "不明";
-                localStorage.setItem("minute", currentMinute);
 			}else{
                 if (selectedButton == 1) {
                     document.getElementById("display").innerHTML = "Button 1 was selected.";
                 } else if (selectedButton == 2) {
                     document.getElementById("display").innerHTML = "Button 2 was selected.";
-                } else if (selectedButton == 3) {
-                    document.getElementById("display").innerHTML = "Button 3 was selected.";
                 } else {
-                    document.getElementById("display").innerHTML = "Please select a button.";
+                    document.getElementById("display").innerHTML = "Button 3 was selected.";
                 }
+                localStorage.setItem("minute", currentMinute);
             }
 		}
 		
