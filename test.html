@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Text Display Web App</title>
+	<title>My Web App</title>
 </head>
 <body>
-	<h1>Text Display Web App</h1>
-	<p>Enter your text:</p>
-	<input type="text" id="textInput">
-	<button onclick="displayText()">Display Text</button>
-	<p id="displayArea"></p>
+	<h1>Welcome to my web app!</h1>
+	<p>Enter your name:</p>
+	<input type="text" id="nameInput">
+	<button onclick="sayHello()">Say Hello</button>
 
 	<script>
-		function displayText() {
-			var text = document.getElementById("textInput").value;
-			document.getElementById("displayArea").innerHTML = text;
+		function sayHello() {
+			var name = document.getElementById("nameInput").value;
+			alert("Hello, " + name + "!");
 		}
 	</script>
 </body>
